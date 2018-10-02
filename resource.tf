@@ -2,17 +2,17 @@ provider "aws" {
   region     = "ap-northeast-1"
 }
 
-resource "aws_instance" "itmstm" {
+resource "aws_instance" "masa_tfe" {
   ami           = "ami-08847abae18baa040"
   instance_type = "t2.micro"
-  key_name = "itmstm"
+  key_name = "masa_tfe_keypair"
 
   # My security setting
   security_groups = ["${aws_security_group.default.name}"]
   
   # Provisioner to store public dns name in file
   provisioner "local-exec" {
-  	command = "echo ${aws_instance.itmstm.public_dns} > public_dns.txt"
+  	command = "echo ${aws_instance.masa_tfe.public_dns} > public_dns.txt"
   }
 }
 
@@ -30,7 +30,7 @@ resource "aws_security_group" "default" {
 }
 
 resource "aws_eip" "ip" {
-	instance = "${aws_instance.itmstm.id}"
+	instance = "${aws_instance.masa_tfe.id}"
 }
 
 output "ip" {
