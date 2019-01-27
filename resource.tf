@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "masa_tfe" {
   ami           = "ami-08847abae18baa040"
   instance_type = "t2.micro"
-  key_name = "masa_tfe_keypair"
+  key_name = "masa"
 
   # My security setting
   security_groups = ["${aws_security_group.default.name}"]
