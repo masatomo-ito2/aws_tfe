@@ -27,6 +27,9 @@ resource "aws_security_group" "default" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  tags {
+    name = "aws test"
+  }
 }
 
 resource "aws_eip" "ip" {
