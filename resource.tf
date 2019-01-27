@@ -7,6 +7,10 @@ resource "aws_instance" "masa_tfe" {
   instance_type = "t2.micro"
   key_name = "masa"
 
+  tags {
+    Name = "AWS test instance"
+  }
+	
   # My security setting
   security_groups = ["${aws_security_group.default.name}"]
   
@@ -28,7 +32,7 @@ resource "aws_security_group" "default" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    name = "aws test"
+    Name = "aws test"
   }
 }
 
